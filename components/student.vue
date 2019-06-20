@@ -16,7 +16,7 @@
           required
         ></v-text-field>
         <br>
-        <v-text-field :disabled="this.isDisabled" v-model="details.age" label="Age" required></v-text-field>
+        <v-text-field @mouseup="enableAge()" :disabled="this.isDisabled" v-model="details.age" label="Age" required></v-text-field>
 
         <br>
         <v-text-field
@@ -39,7 +39,7 @@
         <v-text-field :disabled="this.isDisabled" v-model="details.zipcode" label="Zipcode" required></v-text-field>
         <br>
         
-        <div>
+        <div v-if="this.enableParent">
           <parent-details :details="this.parentInfo" :isDisabled="false"></parent-details>
         </div>
         <v-btn v-if="!this.isDisabled" class="loginbutton" color="success" @click="Register()">Register</v-btn>
@@ -72,13 +72,24 @@ export default {
         lastname: "",
         phone: "",
         email: "",
-        realtionShip: ""
-      }
+        relationShip: ""
+      },
+      enableParent: false
     }
   },
   methods: {
     Register() {
-      console.log(this.details);
+      if(this.details.age < 19) {
+        this.details.parentInfo = this.parentInfo
+      }
+      console.log(this.details)
+    },
+    enableAge() {
+      if(this.details.age < 19) {
+        this.enableParent = true
+      } else {
+        this.enableParent = false
+      }
     }
   }
 };

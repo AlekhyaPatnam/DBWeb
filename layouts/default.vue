@@ -30,7 +30,7 @@
       app
     >
       <v-toolbar-side-icon @click="drawer = !drawer" />
-      <v-toolbar-title v-text="title" />
+      <v-toolbar-title @click="gotoHome()" v-text="title" />
       <v-spacer />
     </v-toolbar>
     <v-content>
@@ -54,18 +54,23 @@ export default {
       fixed: false,
       items: [
         {
-          icon: 'apps',
+          icon: 'class',
           title: 'Add Class',
           to: '/classentry'
         },
         {
-          icon: 'bubble_chart',
+          icon: 'shopping_cart',
           title: 'Add Inventory',
           to: '/Inventory'
         }
       ],
       miniVariant: false,
       title: 'Alekhya the great'
+    }
+  },
+  methods: {
+    gotoHome() {
+      this.$router.push('/')
     }
   }
 }
