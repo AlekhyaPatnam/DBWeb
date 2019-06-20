@@ -51,6 +51,7 @@
 
 <script>
 import parentDetails from "./parentDetails";
+import axios from 'axios';
 
 export default {
   components: {
@@ -83,7 +84,14 @@ export default {
       if(this.details.age < 19) {
         this.details.parentInfo = this.parentInfo
       }
-      console.log(this.details)
+      axios
+        .post("http://localhost:3001/api/cstudent", this.details)
+        .then(function(response) {
+          console.log(response);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     },
     enableAge() {
       if(this.details.age < 19) {

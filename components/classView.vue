@@ -3,7 +3,13 @@
     <v-card class="ClassCard">
       <v-card-title class="headline">class Details</v-card-title>
       <div class="container">
-        <v-text-field :disabled="this.isDisabled" v-model="details.classTime" label="class Time" type="time" required></v-text-field>
+        <v-text-field
+          :disabled="this.isDisabled"
+          v-model="details.classTime"
+          label="class Time"
+          type="time"
+          required
+        ></v-text-field>
         <br>
         <v-overflow-btn
           v-model="details.classDay"
@@ -28,16 +34,17 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   props: {
-      'details': {
-        type: Object,
-        required: true
-      },
-      'isDisabled': {
-          type: Boolean,
-          required: true
-      }
+    'details': {
+      type: Object,
+      required: true
+    },
+    'isDisabled': {
+      type: Boolean,
+      required: true
+    }
   },
   data() {
     return {
@@ -46,14 +53,26 @@ export default {
     };
   },
   methods: {
-      submit() {
-          console.log(this.details);
-      }
+    submit() {
+      console.log(this.details);
+
+      axios.post('http://localhost:3001/api/cclass', this.details)
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    }
   }
 };
 </script>
 
 <style>
+.headline {
+  display: block !important;
+  text-align: center;
+}
 
 .saveButton {
   margin: 0px 0px;
@@ -73,6 +92,4 @@ export default {
   margin-top: 90px;
   margin-bottom: 100px;
 }
-
-
 </style>

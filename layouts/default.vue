@@ -64,7 +64,8 @@ export default {
           to: '/Inventory'
         }
       ],
-      miniVariant: false
+      miniVariant: false,
+      title: 'STUDENT MANAGEMENT'
     }
   },
   methods: {
