@@ -1,15 +1,23 @@
 <template>
     <div>
-        <view-student details=""/>
+        <student :details="this.details" :isDisabled="true">
+        </student>
     </div>
 </template>
 
 <script>
 
-import viewStudent from '../components/viewStudent'
+import student from '../components/student'
 export default {
     components: {
-        viewStudent
+        student
+    },
+    data() {
+        return {
+            details: {
+                m: ''
+            }
+        }
     }
 
 }
