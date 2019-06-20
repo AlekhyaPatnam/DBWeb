@@ -41,7 +41,7 @@ export default {
   },
   data() {
     return {
-      dropdown_font: ["Beginner", "Intermediate", "Expert"],
+      dropdown_font: ["Beginner", "Intermediate", "Advanced"],
       dropdown_day: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     };
   },

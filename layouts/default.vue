@@ -64,8 +64,7 @@ export default {
           to: '/Inventory'
         }
       ],
-      miniVariant: false,
-      title: 'Alekhya the great'
+      miniVariant: false
     }
   },
   methods: {

@@ -37,8 +37,9 @@
         <v-text-field :disabled="this.isDisabled" v-model="details.city" label="City" required></v-text-field>
         <br>
         <v-text-field :disabled="this.isDisabled" v-model="details.zipcode" label="Zipcode" required></v-text-field>
+       <br>
+        <v-text-field :disabled="this.isDisabled" v-model="details.Rank" label="Rank" required></v-text-field>
         <br>
-        
         <div v-if="this.enableParent">
           <parent-details :details="this.parentInfo" :isDisabled="false"></parent-details>
         </div>
