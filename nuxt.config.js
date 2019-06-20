@@ -35,6 +35,7 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '~/plugins/firebase.js'
   ],
   /*
   ** Nuxt.js modules
@@ -65,6 +66,9 @@ module.exports = {
     ** You can extend webpack config here
     */
     extend(config, ctx) {
-    }
+    },
+    router: {
+      middleware: ['check-auth', 'auth-redirect']
+    },
   }
 }

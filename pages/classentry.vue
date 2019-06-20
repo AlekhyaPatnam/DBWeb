@@ -5,7 +5,7 @@
             <div class="container">
              <v-text-field
              v-model="classSchedule.classTime"
-                :rules="nameRules"
+                
                 label="class Time"
                 type = time
                 required

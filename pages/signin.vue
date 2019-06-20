@@ -4,28 +4,49 @@
             <v-card-title class="headline">Login Page</v-card-title>
             <div class="container">
         <v-text-field
-                v-model="lastname"
-                :rules="nameRules"
+                v-model="username"
                 label="User Id"
                 required
             ></v-text-field>
             <br>
             
             <v-text-field
-                v-model="lastname"
-                :rules="nameRules"
+                v-model="password"
                 label="Password"
                 type= Password
                 required
             ></v-text-field>
             </div>
-            <v-btn class="loginbutton" color="success">login</v-btn>
+            <v-btn class="loginbutton" color="success" @click="signin()">login</v-btn>
             </v-card>
     </div>
 </template>
 
 <script>
+
+import { auth } from '@/plugins/firebase.js'
+
 export default {
+    data() {
+        return {
+            username:'',
+            password: ''
+        }
+    },
+    methods: {
+        signin() {
+            console.log(this.username, this.password);
+            var errorCode;
+            var errorMessage = null;
+            auth.signInWithEmailAndPassword(this.username, this.password).catch(function(error) {
+                errorCode = error.code;
+                errorMessage = error.message;
+            });
+            if (errorMessage == null) {
+                this.$router.push('/');
+            }
+        }
+    }
 
 }
 </script>
@@ -42,9 +63,9 @@ export default {
 
 .loginCard {
     top: 0;
-    position: absolute;
+    position: absolute !important;
     margin: auto;
-    background-color: #f5f5f5;
+    background-color: #f5f5f5 !important;
     bottom: 0;
     left: 0;
     right: 0;

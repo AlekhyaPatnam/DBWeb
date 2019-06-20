@@ -10,14 +10,14 @@
         ></v-overflow-btn>
             <v-text-field
              v-model="lastname"
-                :rules="nameRules"
+                
                 label="Fee Amount"
                 required
                 ></v-text-field>
 
 <v-text-field
              v-model="lastname"
-                :rules="nameRules"
+                
                 label="Date"
                 placeholder="abc"
                 type = Date

@@ -5,21 +5,21 @@
             <div class="container">
              <v-text-field
              v-model="student.firstname"
-                :rules="nameRules"
+                
                 label="Firstname"
                 required
                 ></v-text-field>
 <br>
   <v-text-field
              v-model="student.lastname"
-                :rules="nameRules"
+                
                 label="lastname"
                 required
                 ></v-text-field>
 <br>
              <v-text-field
              v-model="student.DOB"
-                :rules="nameRules"
+                
                 label="Date Of Birth"
                 placeholder="abc"
                 type= Date
@@ -30,7 +30,7 @@
 <br>
              <v-text-field
              v-model="student.age"
-                :rules="nameRules"
+                
                 label="Age"
                 required
    
@@ -40,7 +40,7 @@
              <br>
              <v-text-field
              v-model="student.DOJ"
-                :rules="nameRules"
+                
                 label="Date Of Joining"
                 placeholder="abc"
                 type= Date
@@ -51,7 +51,7 @@
              <br>
              <v-text-field
              v-model="student.phone"
-                :rules="nameRules"
+                
                 label="Phone Number"
                 required
    
@@ -60,7 +60,7 @@
              <br>
              <v-text-field
              v-model="student.email"
-                :rules="nameRules"
+                
                 label="Email"
                 required
    
@@ -69,7 +69,7 @@
              <br>
              <v-text-field
              v-model="student.street"
-                :rules="nameRules"
+                
                 label="Address Street"
                 required
    
@@ -78,7 +78,7 @@
              <br>
              <v-text-field
              v-model="student.city"
-                :rules="nameRules"
+                
                 label="City"
                 required
    
@@ -87,7 +87,7 @@
              <br>
              <v-text-field
              v-model="student.zipcode"
-                :rules="nameRules"
+                
                 label="Zipcode"
                 required
    

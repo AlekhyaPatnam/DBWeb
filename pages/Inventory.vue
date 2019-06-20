@@ -5,14 +5,14 @@
             <div class="container">
              <v-text-field
              v-model="lastname"
-                :rules="nameRules"
+                
                 label="Product Name "
                 required
                 ></v-text-field>
 <br>
              <v-textarea
              v-model="lastname"
-                :rules="nameRules"
+                
                 label="Product Description"
                 type= area
                 required
@@ -22,7 +22,7 @@
 <br>
              <v-text-field
              v-model="lastname"
-                :rules="nameRules"
+                
                 label="Cost Price"
                 required
    
@@ -32,7 +32,7 @@
              <br>
              <v-text-field
              v-model="lastname"
-                :rules="nameRules"
+                
                 label="Selling Price"
                 required
                 >

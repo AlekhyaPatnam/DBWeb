@@ -9,7 +9,7 @@
       </v-card>
     </div>
      <div class="cardDivs">
-      <v-card class="homeCard resCard">
+      <v-card @click="goto('/studentenroll')" class="homeCard resCard">
         <v-card-title class="cardTitle">Register Students</v-card-title>
       </v-card>
       <v-card class="homeCard feeCard">
@@ -27,6 +27,11 @@ export default {
   components: {
     Logo,
     VuetifyLogo
+  },
+  methods: {
+    goto(path) {
+      this.$router.push(path);
+    }
   }
 }
 </script>
