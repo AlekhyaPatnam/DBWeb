@@ -25,7 +25,9 @@ export default {
         email: "",
         street: "",
         city: "",
-        zipcode: ""
+        zipcode: "",
+        rank: "",
+        class: ""
       }
     };
   },

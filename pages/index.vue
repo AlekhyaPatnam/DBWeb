@@ -1,10 +1,10 @@
 <template>
   <div class="HomeTopDiv">
     <div class="cardDivs">
-      <v-card class="homeCard studentCard">
+      <v-card @click="goto('/listStudents')" class="homeCard studentCard">
         <v-card-title class="cardTitle">Students</v-card-title>
       </v-card>
-      <v-card class="homeCard inventoryCard">
+      <v-card @click="goto('/viewInventory')" class="homeCard inventoryCard">
         <v-card-title class="cardTitle">Inventory</v-card-title>
       </v-card>
     </div>
@@ -12,7 +12,7 @@
       <v-card @click="goto('/studentenroll')" class="homeCard resCard">
         <v-card-title class="cardTitle">Register Students</v-card-title>
       </v-card>
-      <v-card class="homeCard feeCard">
+      <v-card @click="goto('/feepayment')" class="homeCard feeCard">
         <v-card-title class="cardTitle">Fee Payments</v-card-title>
       </v-card>
     </div>
@@ -56,6 +56,7 @@ export default {
   margin: 25px;
   height: 300px;
   width: 500px;
+  cursor: pointer;
   padding: 25px;
   /* color: #ffffff !important; */
 }

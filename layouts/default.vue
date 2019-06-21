@@ -62,6 +62,16 @@ export default {
           icon: 'shopping_cart',
           title: 'Add Inventory',
           to: '/Inventory'
+        },
+        {
+          icon: 'attach_money',
+          title: 'View Fee List',
+          to: '/viewFeeList'
+        },
+        {
+          icon: 'streetview',
+          title: 'View All Classes',
+          to: '/listclasses'
         }
       ],
       miniVariant: false,

@@ -15,7 +15,8 @@ export default {
     details: {
         feeType: "",
         feeAmount: "",
-        date: ""
+        feeDate: "",
+        personPhone: ""
       },
   })
 };

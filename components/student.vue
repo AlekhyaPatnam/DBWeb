@@ -38,7 +38,10 @@
         <br>
         <v-text-field :disabled="this.isDisabled" v-model="details.zipcode" label="Zipcode" required></v-text-field>
        <br>
-        <v-text-field :disabled="this.isDisabled" v-model="details.Rank" label="Rank" required></v-text-field>
+      <v-overflow-btn :disabled="this.isDisabled" :items="dropdown_rank" v-model="details.rank" label="Rank" target="#dropdown-example"></v-overflow-btn>
+      <br>
+      <v-overflow-btn :disabled="this.isDisabled" :items="dropdown_class" v-model="details.class" label="Class" target="#dropdown-example"></v-overflow-btn>
+      <br>
         <br>
         <div v-if="this.enableParent">
           <parent-details :details="this.parentInfo" :isDisabled="false"></parent-details>
@@ -67,6 +70,37 @@ export default {
       required: true
     }
   },
+  created() {
+     axios
+        .get("http://localhost:3001/api/sranks")
+        .then((response) => {
+          console.log(response.data);
+          var data = [];
+          response.data.forEach(record => {
+              data.push(record.r.properties.rankType);
+          });
+          this.dropdown_rank = data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      axios
+        .get("http://localhost:3001/api/gclass")
+        .then((response) => {
+          console.log(response.data);
+          var data = [];
+          response.data.forEach(record => {
+              var props = record.c.properties;
+              var item = props.classTime+"*"+props.classDay+"*"+props.classLevel
+              data.push(item);
+          });
+          this.dropdown_class = data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+  },
   data() {
     return {
       parentInfo: {
@@ -76,7 +110,9 @@ export default {
         email: "",
         relationShip: ""
       },
-      enableParent: false
+      enableParent: false,
+      dropdown_rank: [],
+      dropdown_class: []
     }
   },
   methods: {
@@ -84,6 +120,15 @@ export default {
       if(this.details.age < 19) {
         this.details.parentInfo = this.parentInfo
       }
+      var props = this.details.class.split("*");
+      var item = {};
+      item.classTime = props[0];
+      item.classDay = props[1];
+      item.classLevel = props[2];
+
+      console.log(item);
+      this.details.classes = item;
+
       axios
         .post("http://localhost:3001/api/cstudent", this.details)
         .then(function(response) {
