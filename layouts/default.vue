@@ -72,6 +72,11 @@ export default {
           icon: 'streetview',
           title: 'View All Classes',
           to: '/listclasses'
+        },
+        {
+          icon: 'streetview',
+          title: 'View InActive Students',
+          to: '/inactive'
         }
       ],
       miniVariant: false,
