@@ -1,4 +1,5 @@
 <template>
+<div class="image">
   <div class="HomeTopDiv">
     <div class="cardDivs">
       <v-card @click="goto('/listStudents')" class="homeCard studentCard">
@@ -17,6 +18,7 @@
       </v-card>
     </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -53,11 +55,11 @@ export default {
 }
 
 .homeCard {
-  margin: 25px;
-  height: 300px;
-  width: 500px;
-  cursor: pointer;
-  padding: 25px;
+  margin: 5px 22px 72px 101px;
+    height: 204px;
+    width: 365px;
+    cursor: pointer;
+    padding: 48px;
   /* color: #ffffff !important; */
 }
 
@@ -76,6 +78,19 @@ export default {
 
 .feeCard {
   background-image: linear-gradient(141deg, #1fc8db 51%, #2cb5e8 60%);
+}
+  .image {
+  /* The image used */
+  background-image: url("../assets/images/taekwondo.jpg");
+  
+  /* Full height */
+  height: 140%;
+  width: 105%; 
+  
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 </style>
 

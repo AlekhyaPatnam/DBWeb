@@ -38,7 +38,7 @@
         <br>
         <v-text-field :disabled="this.isDisabled" v-model="details.zipcode" label="Zipcode" required></v-text-field>
        <br>
-      <v-overflow-btn :disabled="this.isDisabled" :items="dropdown_rank" v-model="details.rank" label="Rank" target="#dropdown-example"></v-overflow-btn>
+      <v-text-field :disabled="this.isDisabled" v-model='rank' label="Rank" required></v-text-field>
       <br>
       <v-overflow-btn :disabled="this.isDisabled" :items="dropdown_class" v-model="details.class" label="Class" target="#dropdown-example"></v-overflow-btn>
       <br>
@@ -103,13 +103,14 @@ export default {
   },
   data() {
     return {
+      rank:'white',
       parentInfo: {
         firstname: "",
         lastname: "",
         phone: "",
         email: "",
-        relationShip: ""
-      },
+        relationShip: "",
+     },
       enableParent: false,
       dropdown_rank: [],
       dropdown_class: []
