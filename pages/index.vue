@@ -1,5 +1,5 @@
 <template>
-<div class="image">
+<div class="imagehome">
   <div class="HomeTopDiv">
     <div class="cardDivs">
       <v-card @click="goto('/listStudents')" class="homeCard studentCard">
@@ -84,7 +84,7 @@ export default {
 .feeCard {
   background-image: linear-gradient(141deg, #1fc8db 51%, #2cb5e8 60%);
 }
-  .image {
+  .imagehome {
   /* The image used */
   background-image: url("../assets/images/taekwondo.jpg");
   

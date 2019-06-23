@@ -16,7 +16,8 @@ export default {
   data() {
     return {
       details: {
-       awardrtype:"",
+       type:"",
+       phone: "",
        date:"",
       }
     };

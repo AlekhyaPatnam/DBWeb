@@ -65,6 +65,11 @@ export default {
           to: '/Inventory'
         },
         {
+          icon: 'account_box',
+          title: 'Award Rank',
+          to: '/awardrank'
+        },
+        {
           icon: 'attach_money',
           title: 'View Fee List',
           to: '/viewFeeList'
