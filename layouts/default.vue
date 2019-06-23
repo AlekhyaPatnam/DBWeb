@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <v-navigation-drawer
+      v-if="this.$store.getters.isAuthenticated"
       v-model="drawer"
       :mini-variant="miniVariant"
       :clipped="clipped"

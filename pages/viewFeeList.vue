@@ -26,7 +26,7 @@
     </v-card>-->
     <div class="container">
         <h4 class="listheading">
-            Paid Fee List
+            Payments List
         </h4>
       <v-data-table :headers="headers" :items="details" class="elevation-1">
         <template v-slot:items="props">

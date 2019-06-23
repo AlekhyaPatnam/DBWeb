@@ -14,7 +14,7 @@
         <v-card-title class="cardTitle">Register Students</v-card-title>
       </v-card>
       <v-card @click="goto('/feepayment')" class="homeCard feeCard">
-        <v-card-title class="cardTitle">Fee Payments</v-card-title>
+        <v-card-title class="cardTitle">Payments</v-card-title>
       </v-card>
     </div>
   </div>
@@ -27,6 +27,11 @@ export default {
   methods: {
     goto(path) {
       this.$router.push(path);
+    }
+  },
+  mounted() {
+    if(!this.$store.getters.isAuthenticated) {
+      this.$router.push('/signin');
     }
   }
 }

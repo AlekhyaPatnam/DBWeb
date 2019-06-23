@@ -74,6 +74,19 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+
+       var month = new Date().getMonth() + 1;
+      if (month < 10) {
+          month = '0'+month;
+      }
+
+      var day = new Date().getDate();
+
+      if (day < 10) {
+          day = '0'+day;
+      }
+
+      this.attendanceDate = new Date().getFullYear()+'-'+month+'-'+day;
     }
 };
 </script>

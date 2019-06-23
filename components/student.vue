@@ -3,9 +3,19 @@
     <v-card class="studetnResCard">
       <v-card-title class="headline">Student Details</v-card-title>
       <div class="container">
-        <v-text-field :disabled="this.isDisabled" v-model="details.firstname" label="Firstname" required></v-text-field>
+        <v-text-field
+          :disabled="this.isDisabled"
+          v-model="details.firstname"
+          label="Firstname"
+          required
+        ></v-text-field>
         <br>
-        <v-text-field :disabled="this.isDisabled" v-model="details.lastname" label="lastname" required></v-text-field>
+        <v-text-field
+          :disabled="this.isDisabled"
+          v-model="details.lastname"
+          label="lastname"
+          required
+        ></v-text-field>
         <br>
         <v-text-field
           v-model="details.DOB"
@@ -16,9 +26,6 @@
           required
         ></v-text-field>
         <br>
-        <v-text-field @mouseup="enableAge()" :disabled="this.isDisabled" v-model="details.age" label="Age" required></v-text-field>
-
-        <br>
         <v-text-field
           :disabled="this.isDisabled"
           v-model="details.DOJ"
@@ -28,11 +35,22 @@
           required
         ></v-text-field>
         <br>
-        <v-text-field :disabled="this.isDisabled" v-model="details.phone" label="Phone Number" required></v-text-field>
+        <v-text-field
+          :disabled="this.isDisabled"
+          v-model="details.phone"
+          label="Phone Number"
+          @mouseup="getAge()"
+          required
+        ></v-text-field>
         <br>
         <v-text-field :disabled="this.isDisabled" v-model="details.email" label="Email" required></v-text-field>
         <br>
-        <v-text-field :disabled="this.isDisabled" v-model="details.street" label="Address Street" required></v-text-field>
+        <v-text-field
+          :disabled="this.isDisabled"
+          v-model="details.street"
+          label="Address Street"
+          required
+        ></v-text-field>
         <br>
         <v-text-field :disabled="this.isDisabled" v-model="details.city" label="City" required></v-text-field>
         <br>
@@ -46,7 +64,12 @@
         <div v-if="this.enableParent">
           <parent-details :details="this.parentInfo" :isDisabled="false"></parent-details>
         </div>
-        <v-btn v-if="!this.isDisabled" class="loginbutton" color="success" @click="Register()">Register</v-btn>
+        <v-btn
+          v-if="!this.isDisabled"
+          class="loginbutton"
+          color="success"
+          @click="Register()"
+        >Register</v-btn>
       </div>
     </v-card>
   </div>
@@ -54,7 +77,7 @@
 
 <script>
 import parentDetails from "./parentDetails";
-import axios from 'axios';
+import axios from "axios";
 
 export default {
   components: {
@@ -65,41 +88,61 @@ export default {
       type: Object,
       required: true
     },
-    'isDisabled' : {
+    'isDisabled': {
       type: Boolean,
       required: true
     }
   },
-  created() {
-     axios
-        .get("http://localhost:3001/api/sranks")
-        .then((response) => {
-          console.log(response.data);
-          var data = [];
-          response.data.forEach(record => {
-              data.push(record.r.properties.rankType);
-          });
-          this.dropdown_rank = data;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+  mounted() {
+    var month = new Date().getMonth() + 1;
+    console.log(new Date());
+      if (month < 10) {
+          console.log(month);
+          month = '0'+month;
+          console.log(month);
+      }
 
-      axios
-        .get("http://localhost:3001/api/gclass")
-        .then((response) => {
-          console.log(response.data);
-          var data = [];
-          response.data.forEach(record => {
-              var props = record.c.properties;
-              var item = props.classTime+"*"+props.classDay+"*"+props.classLevel
-              data.push(item);
-          });
-          this.dropdown_class = data;
-        })
-        .catch((error) => {
-          console.log(error);
+      var day = new Date().getDate();
+
+      if (day < 10) {
+          day = '0'+day;
+      }
+
+      this.details.DOJ = new Date().getFullYear()+'-'+month+'-'+day;
+  },
+  created() {
+    axios
+      .get("http://localhost:3001/api/sranks")
+      .then(response => {
+        console.log(response.data);
+        var data = [];
+        response.data.forEach(record => {
+          data.push(record.r.properties.rankType);
         });
+        this.dropdown_rank = data;
+      })
+      .catch(error => {
+        console.log(error);
+      });
+
+    axios
+      .get("http://localhost:3001/api/gclass")
+      .then(response => {
+        console.log(response.data);
+        var data = [];
+        response.data.forEach(record => {
+          var props = record.c.properties;
+          var item =
+            props.classTime + "*" + props.classDay + "*" + props.classLevel;
+          data.push(item);
+        });
+        this.dropdown_class = data;
+      })
+      .catch(error => {
+        console.log(error);
+      });
+
+    this.details.rank = 'White'
   },
   data() {
     return {
@@ -114,12 +157,12 @@ export default {
       enableParent: false,
       dropdown_rank: [],
       dropdown_class: []
-    }
+    };
   },
   methods: {
     Register() {
-      if(this.details.age < 19) {
-        this.details.parentInfo = this.parentInfo
+      if (this.details.age < 19) {
+        this.details.parentInfo = this.parentInfo;
       }
       var props = this.details.class.split("*");
       var item = {};
@@ -140,18 +183,29 @@ export default {
         });
     },
     enableAge() {
-      if(this.details.age < 19) {
-        this.enableParent = true
+      if (this.details.age < 19) {
+        this.enableParent = true;
       } else {
-        this.enableParent = false
+        this.enableParent = false;
       }
+    },
+    getAge() {
+      var today = new Date();
+      var birthDate = new Date(this.details.DOB);
+      var age = today.getFullYear() - birthDate.getFullYear();
+      var m = today.getMonth() - birthDate.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age = age - 1;
+      }
+
+      this.details.age = age;
+      this.enableAge();
     }
   }
 };
 </script>
 
 <style>
-
 .headline {
   display: block !important;
   text-align: center;
@@ -168,6 +222,4 @@ export default {
   min-height: 1050px;
   margin-bottom: 100px;
 }
-
-
 </style>

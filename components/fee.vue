@@ -1,11 +1,11 @@
 <template>
   <div>
     <v-card class="feecard">
-      <v-card-title class="headline">Fee Details</v-card-title>
+      <v-card-title class="headline">Payments Details</v-card-title>
       <div class="container">
         <v-text-field v-model="details.personPhone" label="Student Id" required></v-text-field>
-        <v-overflow-btn v-model="details.feeType" :items="dropdown_font" label="Fee Type" target="#dropdown-example"></v-overflow-btn>
-        <v-text-field v-model="details.feeAmount" label="Fee Amount" required></v-text-field>
+        <v-overflow-btn v-model="details.feeType" :items="dropdown_font" label="payment Type" target="#dropdown-example"></v-overflow-btn>
+        <v-text-field v-model="details.feeAmount" label="Amount" required></v-text-field>
 
         <v-text-field label="Date" v-model="details.feeDate" placeholder="abc" type="Date" required></v-text-field>
       </div>
@@ -44,6 +44,20 @@ export default {
           console.log(error);
         });
     }
+  },
+  mounted() {
+    var month = new Date().getMonth() + 1;
+      if (month < 10) {
+          month = '0'+month;
+      }
+
+      var day = new Date().getDate();
+
+      if (day < 10) {
+          day = '0'+day;
+      }
+
+      this.details.feeDate = new Date().getFullYear()+'-'+month+'-'+day;
   }
 };
 </script>

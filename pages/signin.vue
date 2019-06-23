@@ -1,25 +1,16 @@
 <template>
-    <div class="image">
-        <v-card class="loginCard">
-            <v-card-title class="headline">Login Page</v-card-title>
-            <div class="container">
-        <v-text-field
-                v-model="username"
-                label="User Id"
-                required
-            ></v-text-field>
-            <br>
-            
-            <v-text-field
-                v-model="password"
-                label="Password"
-                type= Password
-                required
-            ></v-text-field>
-            </div>
-            <v-btn class="loginbutton" color="success" @click="signin()">login</v-btn>
-            </v-card>
-    </div>
+  <div class="image">
+    <v-card class="loginCard">
+      <v-card-title class="headline">Login Page</v-card-title>
+      <div class="container">
+        <v-text-field v-model="username" label="User Id" required></v-text-field>
+        <br>
+
+        <v-text-field v-model="password" label="Password" type="Password" required></v-text-field>
+      </div>
+      <v-btn class="loginbutton" color="success" @click="signin()">login</v-btn>
+    </v-card>
+  </div>
 </template>
 
 <script>
@@ -42,7 +33,14 @@ export default {
                 errorCode = error.code;
                 errorMessage = error.message;
             });
+
+            var user = {
+                email: this.username
+            }
+            this.$store.commit('SET_USER', user);
+
             if (errorMessage == null) {
+                
                 this.$router.push('/');
             }
         }
@@ -52,46 +50,41 @@ export default {
 </script>
 
 <style>
-
-.headline
-{
-    margin: 0px 153px;
+.headline {
+  margin: 0px 153px;
 }
-.loginbutton{
-    margin: 0px 196px;
+.loginbutton {
+  margin: 0px 196px;
 }
 
 .loginCard {
-    top: 0;
-    position: absolute !important;
-    margin: auto;
-    background-color: #f5f5f5 !important;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 500px;
-    height: 360px;
-    
+  top: 0;
+  position: absolute !important;
+  margin: auto;
+  background-color: #f5f5f5 !important;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 500px;
+  height: 360px;
 }
 
 .image {
   /* The image used */
   background-image: url("../assets/images/adm.png");
-  
+
   /* Add the blur effect */
   /* filter: blur(8px);
   -webkit-filter: blur(8px); */
-  
+
   /* Full height */
-  height: 100%; 
-  
+  height: 100%;
+
   /* Center and scale the image nicely */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  
 }
-
 </style>
 
    

@@ -69,7 +69,7 @@ module.exports = {
     extend(config, ctx) {
     },
     router: {
-      middleware: ['check-auth', 'auth-redirect']
+      // middleware: ['check-auth', 'auth-redirect']
     },
   }
 }

@@ -14,6 +14,7 @@ export const state = () => {
   
   export const getters = {
     isAuthenticated (state) {
+      console.log(state.user);
       return !!state.user
     },
     loggedUser (state) {

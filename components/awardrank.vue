@@ -30,7 +30,7 @@ export default {
   }),
    
   mounted() {
-      var month = new Date().getMonth();
+      var month = new Date().getMonth() + 1;
       if (month < 10) {
           month = '0'+month;
       }
